@@ -11,13 +11,15 @@ import { SearchProblemsComponent } from './search-problems/search-problems.compo
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProblemListComponent } from './problem-list/problem-list.component';
 import { QuestionAnswerComponent } from './question-answer/question-answer.component';
+import { AskQuestionComponent } from './ask-question/ask-question.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchProblemsComponent,
     ProblemListComponent,
-    QuestionAnswerComponent
+    QuestionAnswerComponent,
+    AskQuestionComponent
   ],
   imports: [
     BrowserModule,
