@@ -10,14 +10,14 @@ export class QuestionAnswerComponent implements OnInit {
 
     @Input() public threadId: string
     private threadService: ThreadService
-    private displayThread: Thread
+    public displayThread: Thread
 
     constructor(threadService: ThreadService) { 
         this.threadService = threadService
     }
 
     ngOnInit() {
-        this.displayThread = this.getQuestionThread(this.threadId)
+        this.displayThread = this.getQuestionThread("1")
     }
 
     private getQuestionThread(threadId: string):Thread {

@@ -1,6 +1,7 @@
 export class Question {
-    authorId: String
-    question: String
-    title: String
+    questionId: string
+    authorId: string
+    issue: string
+    title: string
     score: Number
 }

@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { QuestionAnswerComponent } from 'src/question-answer/question-answer.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'thread', component: QuestionAnswerComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
