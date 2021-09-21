@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-search-problems',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchProblemsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private formBuilder:FormBuilder) { }
 
+  searchForm:FormGroup;
   ngOnInit() {
+    this.searchForm = this.formBuilder.group({
+      search:[]
+    })
+  }
+
+  submit(){
+    console.log("serach submitted");
   }
 
 }
