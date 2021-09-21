@@ -17,8 +17,12 @@ export class SearchProblemsComponent implements OnInit {
     })
   }
 
+  searchProblems(){
+
+  }
+
   submit(){
-    console.log("serach submitted");
+    this.searchProblems();
   }
 
 }
