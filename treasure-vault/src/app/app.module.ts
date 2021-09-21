@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { SearchProblemsComponent } from './search-problems/search-problems.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProblemListComponent } from './problem-list/problem-list.component';
-import { QuestionAnswerComponent } from 'src/question-answer/question-answer.component';
+import { QuestionAnswerComponent } from './question-answer/question-answer.component';
 
 @NgModule({
   declarations: [
