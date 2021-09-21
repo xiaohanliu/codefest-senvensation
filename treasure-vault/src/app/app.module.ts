@@ -1,18 +1,32 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import {
+  MatGridListModule, MatFormFieldModule,MatInputModule,MatChipsModule,MatListModule
+} from '@angular/material';
 
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchProblemsComponent } from './search-problems/search-problems.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AskQuestionComponent } from './ask-question/ask-question.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchProblemsComponent, 
+    AskQuestionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    MatGridListModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatChipsModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
