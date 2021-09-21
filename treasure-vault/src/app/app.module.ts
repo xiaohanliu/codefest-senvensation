@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule, MatIconModule } from '@angular/material';
-import { QuestionAnswerComponent } from 'src/question-answer/question-answer.component';
+import { QuestionAnswerComponent } from './question-answer/question-answer.component';
 
 @NgModule({
   declarations: [
