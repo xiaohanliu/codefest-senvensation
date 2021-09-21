@@ -2,7 +2,8 @@ import { Answer } from "../../models/answer"
 import { Question } from "../../models/question"
 import { Thread } from "../../models/thread"
 
-export const MockQuestion1Data: Question = {questionId: "01", authorId: "01", issue: "Does my code look good?", title: "Cool title" , score: 1}
+
+export const MockQuestion1Data: Question = {questionId: "01", authorId: "01", issue: "Does my code look good?", title: "Cool title" , score: 1, tags:["angular","mock","spy"]}
 
 export const MockAnswersData: Answer[] = [{answerId: "01", authorId: "02", response: "You suck!!!", score: -40}]
 

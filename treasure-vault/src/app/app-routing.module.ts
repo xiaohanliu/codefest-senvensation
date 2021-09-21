@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ProblemListComponent } from './problem-list/problem-list.component';
+import { AskQuestionComponent } from './ask-question/ask-question.component';
+import { SearchProblemsComponent } from './search-problems/search-problems.component';
 import { QuestionAnswerComponent } from './question-answer/question-answer.component';
 
-
 const routes: Routes = [
-  { path: 'thread', component: QuestionAnswerComponent }
+  {path: '', redirectTo: 'search-problems', pathMatch: 'full'},
+  {path: 'search-problems', component:SearchProblemsComponent},
+  {path: 'problem-list',component:ProblemListComponent},
+  {path: 'thread', component: QuestionAnswerComponent },
+  {path: 'ask-question', component:AskQuestionComponent}
 ];
 
 @NgModule({

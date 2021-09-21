@@ -4,4 +4,5 @@ export class Question {
     issue: string
     title: string
     score: Number
+    tags: string[]
 }
