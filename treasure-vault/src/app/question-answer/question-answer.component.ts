@@ -18,6 +18,7 @@ export class QuestionAnswerComponent implements OnInit {
 
     ngOnInit() {
         this.displayThread = this.getQuestionThread("1")
+
     }
 
     private getQuestionThread(threadId: string):Thread {
