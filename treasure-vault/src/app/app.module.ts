@@ -9,11 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchProblemsComponent } from './search-problems/search-problems.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ProblemListComponent } from './problem-list/problem-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchProblemsComponent
+    SearchProblemsComponent,
+    ProblemListComponent
   ],
   imports: [
     BrowserModule,

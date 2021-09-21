@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-problems',
@@ -8,21 +9,19 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class SearchProblemsComponent implements OnInit {
 
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:FormBuilder,private router:Router) { }
 
+  searchKeywords:string;
   searchForm:FormGroup;
+
   ngOnInit() {
     this.searchForm = this.formBuilder.group({
       search:[]
     })
   }
-
-  searchProblems(){
-
-  }
-
   submit(){
-    this.searchProblems();
+    this.searchKeywords = this.searchForm.get('search').value
+    this.router.navigate(['problem-list']);
   }
 
 }

@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
+.mat-grid-tile .mat-figure {
+    left: 20px;
+    justify-content: left;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

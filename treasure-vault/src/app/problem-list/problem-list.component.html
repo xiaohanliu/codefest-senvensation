@@ -1,0 +1,27 @@
+<app-search-problems (searchKeywords) = "searchKeywords"></app-search-problems>
+<mat-grid-list cols="12" rowheight="100px">
+    <mat-grid-tile colspan="4" rowspan="1">
+        <p>All Questions</p>
+    </mat-grid-tile>
+</mat-grid-list>
+<ng-container *ngFor="let e of [].constructor(5); let i = index">
+    <mat-grid-list cols="12">
+        <mat-grid-tile colspan="12" rowspan="1">
+            <label>Question {{i+1}}</label>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="12">
+        <mat-grid-tile colspan="12" rowspan="1">       
+            <p>Description{{i+1}}</p>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list cols="12">
+            <mat-grid-tile colspan="12" rowspan="1">
+                <mat-chip-list aria-label="Fish selection">
+                    <mat-chip>angular</mat-chip>
+                    <mat-chip>Front end</mat-chip>
+                </mat-chip-list> 
+            </mat-grid-tile>
+    </mat-grid-list> 
+    <mat-divider *ngIf="i!==4"></mat-divider>                 
+</ng-container>
