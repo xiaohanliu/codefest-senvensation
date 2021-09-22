@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatGridListModule, MatFormFieldModule,MatInputModule,MatChipsModule,MatListModule,MatCardModule, MatIconModule, MatButtonModule, MatToolbarModule 
 } from '@angular/material';
@@ -35,6 +35,7 @@ import { AskQuestionComponent } from './ask-question/ask-question.component';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    FormsModule,
     BrowserAnimationsModule
   ],
   providers: [],

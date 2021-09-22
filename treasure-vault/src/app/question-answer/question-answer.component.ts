@@ -1,6 +1,9 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { ActivatedRoute, Params } from "@angular/router";
+import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { GlobalValues } from "../shared/global-values";
+import { IBase, Person } from "../shared/models/base-class";
 import { ThreadService } from "../shared/services/thread.service";
+import { Answer } from "./models/answer";
 import { Thread } from "./models/thread";
 
 @Component({
@@ -14,7 +17,9 @@ export class QuestionAnswerComponent implements OnInit {
     private threadService: ThreadService
     private route: ActivatedRoute
     public displayThread: Thread
-    public param: String;
+    public param: String
+    public globalValues: GlobalValues
+    @ViewChild('mat-input-1', {static: false})public reply: ElementRef
 
     constructor(threadService: ThreadService, route: ActivatedRoute) { 
         this.threadService = threadService
@@ -36,5 +41,18 @@ export class QuestionAnswerComponent implements OnInit {
 
     public downVote() {
         this.displayThread.downCount++
+    }
+
+    public submitReply(id: string) {
+        let newAnswer = new Answer()
+        newAnswer.author = new Person("TedDancin", "The Good Place")
+        newAnswer.parentId = id
+        const date = new Date()
+        newAnswer.createdDate = date
+        newAnswer.updatedDate = date
+        newAnswer.upCount = 0
+        newAnswer.downCount = 0
+        newAnswer.description = document.getElementById("mat-input-1").innerHTML;
+        this.displayThread.answers.push(newAnswer)
     }
 }

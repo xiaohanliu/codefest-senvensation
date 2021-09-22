@@ -1,10 +1,10 @@
-import { IBase } from "src/app/shared/models/base-class";
+import { IBase, Person } from "src/app/shared/models/base-class";
 
 export class Question implements IBase{
     id: string;
     title: string;
     description: string;
-    author: string;
+    author: Person;
     createdDate: Date;
     updatedDate: Date;
     upCount: number;

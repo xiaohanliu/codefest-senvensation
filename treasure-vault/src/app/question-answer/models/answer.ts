@@ -1,7 +1,6 @@
-import { IBase, Person } from "../../shared/models/base-class"
-import { Answer } from "./answer"
+import { IBase, Person } from "src/app/shared/models/base-class"
 
-export class Thread implements IBase {
+export class Answer implements IBase {
     id: string
     title: string
     description: string
@@ -12,5 +11,4 @@ export class Thread implements IBase {
     downCount: number
     parentId?: string
     tags: string[]
-    answers: Answer[] 
 }
