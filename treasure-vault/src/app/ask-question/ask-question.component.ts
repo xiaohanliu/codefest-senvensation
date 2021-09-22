@@ -24,20 +24,20 @@ export class AskQuestionComponent implements OnInit {
     if (!this.questionForm.valid) {
       return;
     }
-      this.router.navigate(['problem-list']);
-      this.askQuestionService.postQuestion().subscribe({      
-        next: (response) =>{
-          console.log(response);
-      }})    
-  
     console.log(this.questionForm.value);
+
+    this.askQuestionService.postQuestion(this.questionForm.value).subscribe({      
+      next: (response) =>{
+        console.log(response);
+        this.router.navigate(['problem-list']);
+    }})    
   }
 
 
   ngOnInit() {
     this.questionForm = this.formBuilder.group({
-      title: [null, Validators.required],
-      description: [null, Validators.required]
+      title: [],
+      description: []
     });
   }
 

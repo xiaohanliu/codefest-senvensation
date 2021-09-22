@@ -11,7 +11,7 @@ export class AskQuestionService extends BaseHttpService{
     constructor(private httpClient:HttpClient){
         super(httpClient);
     }
-    postQuestion():Observable<any>{
-        return this.httpClient.post<any>(this.rootUrl+`issue`,this.httpOptions)
+    postQuestion(data:any):Observable<any>{
+        return this.httpClient.post<any>(this.rootUrl+`issue`,data,this.httpOptions)
     }
 }
