@@ -29,8 +29,10 @@ export class ProblemListComponent implements OnInit {
   filterQuestionList():Question[]{
     return []
   }
-  goToThread(){
-    this.router.navigate(['thread']);
+
+  goToThread(id: string){
+    console.log(`id is ... ${id}`)
+    this.router.navigate(['/thread', {id: id}]);
   }
 
 

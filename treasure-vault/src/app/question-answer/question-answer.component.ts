@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { ActivatedRoute, Params } from "@angular/router";
 import { ThreadService } from "../shared/services/thread.service";
 import { Thread } from "./models/thread";
 
@@ -11,14 +12,18 @@ export class QuestionAnswerComponent implements OnInit {
 
     @Input() public threadId: string
     private threadService: ThreadService
+    private route: ActivatedRoute
     public displayThread: Thread
+    public param: String;
 
-    constructor(threadService: ThreadService) { 
+    constructor(threadService: ThreadService, route: ActivatedRoute) { 
         this.threadService = threadService
+        this.route = route
     }
 
     ngOnInit() {
-        this.displayThread = this.getQuestionThread("1")
+        const id = this.route.snapshot.paramMap.get('id')
+        this.displayThread = this.getQuestionThread(id)
     }
 
     private getQuestionThread(threadId: string):Thread {
