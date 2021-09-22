@@ -13,14 +13,10 @@ export class AppComponent implements OnInit{
   title = 'treasure-vault';
   searchKeywords:string;
   searchForm:FormGroup;
-  
+
   ngOnInit() {
     this.searchForm = this.formBuilder.group({
       search:[]
     })
-  }
-  submit(){
-    this.searchKeywords = this.searchForm.get('search').value
-    this.router.navigate(['problem-list']);
   }
 }
