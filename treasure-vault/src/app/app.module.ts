@@ -38,6 +38,6 @@ import { AskQuestionComponent } from './ask-question/ask-question.component';
     BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent, QuestionAnswerComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
