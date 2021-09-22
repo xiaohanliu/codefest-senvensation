@@ -6,8 +6,7 @@ import { SearchProblemsComponent } from './search-problems/search-problems.compo
 import { QuestionAnswerComponent } from './question-answer/question-answer.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'search-problems', pathMatch: 'full'},
-  {path: 'search-problems', component:SearchProblemsComponent},
+  {path: '', redirectTo: 'problem-list', pathMatch: 'full'},
   {path: 'problem-list',component:ProblemListComponent},
   {path: 'thread', component: QuestionAnswerComponent },
   {path: 'ask-question', component:AskQuestionComponent}

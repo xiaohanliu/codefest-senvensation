@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Thread } from "../models/thread";
-import { MockThreadData } from "./mock-data/mock-thread-data";
+import { MockThreads } from "src/app/question-answer/mock-data/mock-issue-data";
+import { Thread } from "src/app/question-answer/models/thread";
 
 @Injectable({
     providedIn: 'root'
@@ -12,8 +12,8 @@ export class ThreadService {
     }
 
     mockThreadGetRequestMethod(id: string): Thread {
-         return MockThreadData.filter(function (x: Thread) {
-            if (x.threadId.includes(id)) { 
+         return MockThreads.filter(function (x: Thread) {
+            if (x.id.includes(id)) { 
                 return x;
             }
          })[0]
