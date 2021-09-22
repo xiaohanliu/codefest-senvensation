@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProblemListService } from './shared/services/problem-list.service';
 import { BaseHttpService } from './shared/services/base-http.service';
 import { ThreadService } from './shared/services/thread.service';
+import { AskQuestionService } from './shared/services/ask-question.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { ThreadService } from './shared/services/thread.service';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [BaseHttpService,ProblemListService,ThreadService],
+  providers: [BaseHttpService,ProblemListService,ThreadService,AskQuestionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
