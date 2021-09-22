@@ -24,4 +24,10 @@ export class SearchProblemsComponent implements OnInit {
     this.router.navigate(['problem-list']);
   }
 
+  AskQuestion(){
+    this.router.navigate(['ask-question'])
+  }
+  returnToHome(){
+    this.router.navigate(['problem-list']);
+  }
 }

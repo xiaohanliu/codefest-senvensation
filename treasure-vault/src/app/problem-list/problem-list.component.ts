@@ -25,5 +25,9 @@ export class ProblemListComponent implements OnInit {
     {id: "03", author: "TedDancin", createdDate: new Date(), updatedDate: new Date(), description: "Does my code look good?", title: "Cool title" , upCount: 5, downCount: 2, tags:["bdd","cucumber","selenium"]}]
   }
 
+  filterQuestionList():Question[]{
+    return []
+  }
+
 
 }

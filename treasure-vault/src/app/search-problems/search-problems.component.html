@@ -1,14 +1,15 @@
-<mat-grid-list cols="18" rows="1">
-    <mat-grid-tile colspan="14" rowspan="1">
-        <form [formGroup]="searchForm" (submit)="submit()">
-            <mat-form-field class = "form-field"appearance="outline">
-                <mat-label>Search</mat-label>
-                <input matInput formControlName="search">
-            </mat-form-field>
-        </form>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="4" rowspan="1">Ask question</mat-grid-tile>
-</mat-grid-list>
+<mat-toolbar>
+    <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+        <mat-icon (click)="returnToHome()">home</mat-icon>
+      </button>
+    <form [formGroup]="searchForm" (submit)="submit()">
+        <mat-form-field class = "form-field"appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput formControlName="search">
+        </mat-form-field>
+    </form>
+    <button type="button" mat-raised-button color="primary" (click)="AskQuestion()">Ask question</button>
+</mat-toolbar>
 
 
     
