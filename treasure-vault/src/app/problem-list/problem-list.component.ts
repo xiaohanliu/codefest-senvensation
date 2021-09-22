@@ -25,7 +25,7 @@ export class ProblemListComponent implements OnInit {
     this.problemListService.getProblemList().subscribe({
       next: (problems) =>{
         console.log(problems);
-        this.questionList = problems;
+        // this.questionList = problems;
       },
       error: (err)=>{
         console.error(err);

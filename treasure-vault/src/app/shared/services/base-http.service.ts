@@ -7,7 +7,7 @@ import { Injectable } from "@angular/core";
     providedIn: 'root'
 })
 export class BaseHttpService {
-    rootUrl = "https://pkumn03tok.execute-api.us-east-2.amazonaws.com/";
+    rootUrl = "https://z2ov86ths5.execute-api.us-east-2.amazonaws.com/";
     headers: HttpHeaders = new HttpHeaders({
         'content-Type': 'application/json'
     });
