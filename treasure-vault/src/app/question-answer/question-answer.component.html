@@ -11,7 +11,7 @@
                     {{displayThread.upCount - displayThread.downCount}}
                     <button mat-mini-fab color="basic" (click)="downVote()"><mat-icon aria-hidden="false" aria-label="Keyboard arrow up">keyboard_arrow_down</mat-icon></button>
                     <span class="align-right"></span>
-                    <mat-card-title>{{displayThread.author}}</mat-card-title>
+                    <mat-card-title>{{displayThread.author.username}}</mat-card-title>
                     <div mat-card-avatar class="example-header-image"></div>
                 </mat-toolbar-row>
             </mat-toolbar>
@@ -37,7 +37,7 @@
                             <mat-icon aria-hidden="false" aria-label="Keyboard arrow up">keyboard_arrow_down</mat-icon>
                         </button>
                         <span class="align-right"></span>
-                        <mat-card-title>{{answer.author}}</mat-card-title>
+                        <mat-card-title>{{answer.author.username}}</mat-card-title>
                         <div mat-card-avatar class="example-header-image"></div>
                     </mat-toolbar-row>
                 </mat-toolbar>
@@ -46,3 +46,12 @@
     </div>
     <br><hr><br>
 </ng-container>
+<div class="center">
+    <form [formGroup]="answerForm" (submit)="submitReply()">
+        <mat-form-field class="form-field">
+            <mat-label>Post a reply!</mat-label>
+            <textarea matInput formControlName="reply"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+</div>

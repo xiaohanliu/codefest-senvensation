@@ -1,14 +1,14 @@
-<mat-toolbar>
-    <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+<mat-toolbar class="center" color="primary">
+    <button mat-icon-button color="basic" aria-label="Example icon button with a home icon">
         <mat-icon (click)="returnToHome()">home</mat-icon>
-      </button>
+    </button>
     <form [formGroup]="searchForm" (submit)="submit()">
-        <mat-form-field class = "form-field"appearance="outline">
+        <mat-form-field class ="form-field">
             <mat-label>Search</mat-label>
             <input matInput formControlName="search">
         </mat-form-field>
     </form>
-    <button type="button" mat-raised-button color="primary" (click)="AskQuestion()">Ask question</button>
+    <button type="button" mat-button color="basic" (click)="AskQuestion()">Ask question</button>
 </mat-toolbar>
 
 
