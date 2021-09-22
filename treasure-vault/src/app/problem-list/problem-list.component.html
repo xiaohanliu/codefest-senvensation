@@ -1,27 +1,25 @@
-
 <mat-grid-list cols="18" rowspan="1">
     <mat-grid-tile colspan="4" rowspan="1">
         <p>All Questions</p>
     </mat-grid-tile>
 </mat-grid-list>
-<ng-container *ngFor="let e of [].constructor(20); let i = index">
+<ng-container *ngFor="let question of questionList; let i = index">
     <mat-grid-list cols="18">
         <mat-grid-tile colspan="4" rowspan="1">
-            <label>Question {{i+1}}</label>
+            <label>{{question.title}}</label>
         </mat-grid-tile>
     </mat-grid-list>
     <mat-grid-list cols="18">
         <mat-grid-tile colspan="4" rowspan="1">       
-            <p>Description{{i+1}}</p>
+            <p>{{question.description}}</p>
         </mat-grid-tile>
     </mat-grid-list>
     <mat-grid-list cols="18">
             <mat-grid-tile colspan="4" rowspan="1">
                 <mat-chip-list aria-label="Fish selection">
-                    <mat-chip>angular</mat-chip>
-                    <mat-chip>Front end</mat-chip>
+                    <mat-chip *ngFor="let tag of question.tags">{{tag}}</mat-chip>
                 </mat-chip-list> 
             </mat-grid-tile>
     </mat-grid-list> 
-    <mat-divider *ngIf="i!==19"></mat-divider>                 
+    <mat-divider *ngIf="i!==questionList.length"></mat-divider>                 
 </ng-container>
