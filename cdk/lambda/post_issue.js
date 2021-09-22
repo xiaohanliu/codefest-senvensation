@@ -16,24 +16,24 @@ export async function post(event) {
         };
     }
 
-    const issue = JSON.parse(event.body);
-    const id = v4();
+    let issue = JSON.parse(event.body);
+    let id = v4();
+    let now = new Date();
 
     // define a new issue entry and await its creation
     let put = await dynamoClient.put({
         TableName: env.TABLE_NAME,
         Item: {
-        id: id,
-        title: issue.title,
-        issueShortDescription: issue.shortDescription,
-        issueDetails: issue.details,
-        submittedBy: issue.submittedBy,
-        lastUpdatedBy: issue.lastUpdatedBy,
-        createdDate: issue.createdDate,
-        lastUpdatedDate: issue.updatedDate,
-        parentId: issue.parentId,
-        upCount: issue.upCount,
-        downCount: issue.downCount
+            id: id,
+            title: issue.title,
+            description: issue.description,
+            author: issue.author,
+            createdDate: now.toISOString(),
+            updatedDate: now.toISOString(),
+            upCount: issue.upCount,
+            downCount: issue.downCount,
+            tags: issue.tags,
+            parentId: issue.parentId
         },
     }).promise();
 

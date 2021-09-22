@@ -2,7 +2,7 @@ const cdk = require('@aws-cdk/core');
 const dynamodb = require('@aws-cdk/aws-dynamodb');
 const lambda = require('@aws-cdk/aws-lambda');
 const lambdaNode = require('@aws-cdk/aws-lambda-nodejs');
-const apiGW = require('@aws-cdk/aws-apigatewayv2');
+const {CorsHttpMethod, HttpApi, HttpMethod} = require('@aws-cdk/aws-apigatewayv2');
 const lambdaProxyIntegration = require('@aws-cdk/aws-apigatewayv2-integrations');
 
 //import * as iam from '@aws-cdk/aws-iam';
@@ -24,7 +24,7 @@ class CdkStack extends cdk.Stack {
       writeCapacity: 1,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       partitionKey: {name: 'id', type: dynamodb.AttributeType.STRING},
-      sortKey: {name: 'createdAt', type: dynamodb.AttributeType.NUMBER},
+      //sortKey: {name: 'createdAt', type: dynamodb.AttributeType.NUMBER},
       pointInTimeRecovery: true,
     });
 
@@ -32,11 +32,13 @@ class CdkStack extends cdk.Stack {
     new cdk.CfnOutput(this, 'TableArn', {value: table.tableArn});
 
     // add local secondary index
+    /*
     table.addLocalSecondaryIndex({
       indexName: 'statusIndex',
       sortKey: {name: 'status', type: dynamodb.AttributeType.STRING},
       projectionType: dynamodb.ProjectionType.ALL,
     });
+    */
 
     // lambdas...
     const postFunction = new lambdaNode.NodejsFunction(this, 'PostFunction', {
@@ -65,29 +67,61 @@ class CdkStack extends cdk.Stack {
     // Grant only read access for this function
     table.grantReadData(getFunction);
 
-    // APIGateway...
-    const api = new apiGW.HttpApi(this, 'Api', {
-      corsPreflight: {
-        allowHeaders: ['Authorization'],
-        allowMethods: [CorsHttpMethod.GET, CorsHttpMethod.HEAD, CorsHttpMethod.OPTIONS, CorsHttpMethod.POST],
-        allowOrigins: ['*'],
-        maxAge: Duration.days(10),
+    const putFunction = new lambdaNode.NodejsFunction(this, 'PutFunction', {
+      runtime: lambda.Runtime.NODEJS_12_X,
+      // name of the exported function
+      handler: 'put',
+      // file to use as entry point for our Lambda function
+      entry: __dirname + '/../lambda/put_issue.js',
+      environment: {
+        TABLE_NAME: table.tableName,
       },
     });
+
+    // Grant full access to the data
+    table.grantReadWriteData(putFunction);
+
+    // APIGateway...
+    const api = new HttpApi(this, 'issue-api', {
+      description: 'Issue API',
+      corsPreflight: {
+        allowHeaders: [
+          'Content-Type',
+          'X-Amz-Date',
+          'Authorization',
+          'X-Api-Key',
+        ],
+        allowMethods: [
+          CorsHttpMethod.OPTIONS,
+          CorsHttpMethod.GET,
+          CorsHttpMethod.POST,
+          CorsHttpMethod.PUT,
+          CorsHttpMethod.PATCH,
+          CorsHttpMethod.DELETE,
+        ],
+        allowCredentials: true
+      }
+    });
+    
     new cdk.CfnOutput(this, 'ApiUrl', {value: api.url});
 
     api.addRoutes({
       path: '/issue',
-      methods: [apiGW.HttpMethod.POST],
+      methods: [HttpMethod.POST],
       integration: new lambdaProxyIntegration.LambdaProxyIntegration({handler: postFunction})
     });
 
     api.addRoutes({
       path: '/issue',
-      methods: [apiGW.HttpMethod.GET],
+      methods: [HttpMethod.GET],
       integration: new lambdaProxyIntegration.LambdaProxyIntegration({handler: getFunction})
     });
 
+    api.addRoutes({
+      path: '/issue',
+      methods: [HttpMethod.PUT],
+      integration: new lambdaProxyIntegration.LambdaProxyIntegration({handler: putFunction})
+    });
   }
 }
 

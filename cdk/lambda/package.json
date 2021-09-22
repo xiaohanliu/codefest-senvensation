@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "querystring": "^0.2.1",
     "uuid": "^8.3.2"
   }
 }
