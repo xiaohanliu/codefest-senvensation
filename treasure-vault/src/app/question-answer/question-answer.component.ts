@@ -25,7 +25,7 @@ export class QuestionAnswerComponent implements OnInit {
     }
 
     private getQuestionThread(threadId: string):Thread {
-        return this.threadService.getThread(threadId)
+        return this.threadService.getThread("1")
     }
 
     public upVote() {
