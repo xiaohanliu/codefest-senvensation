@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -21,7 +21,7 @@ export class SearchProblemsComponent implements OnInit {
   }
   submit(){
     this.searchKeywords = this.searchForm.get('search').value
-    this.router.navigate(['problem-list']);
+    this.router.navigate(['problem-list',{searchKeywords:this.searchKeywords}]);
   }
 
   AskQuestion(){
