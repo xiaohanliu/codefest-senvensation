@@ -1,34 +1,47 @@
 <div class="center">
     <mat-card class="example-card">
-        <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>{{displayThread.question.title}}</mat-card-title>
-        </mat-card-header>
+        <mat-card-title>{{displayThread.title}}</mat-card-title>
         <mat-card-content>
-            {{displayThread.question.issue}}
+            {{displayThread.description}}
         </mat-card-content>
-        <mat-card-actions>
-            <mat-icon aria-hidden="false" aria-label="Keyboard arrow up">keyboard_arrow_up</mat-icon>
-            {{displayThread.question.score}}
-            <mat-icon aria-hidden="false" aria-label="Keyboard arrow up">keyboard_arrow_down</mat-icon>
-        </mat-card-actions>
+        <mat-card-footer>
+            <mat-toolbar>
+                <mat-toolbar-row>
+                    <button mat-mini-fab color="basic" (click)="upVote()"><mat-icon aria-hidden="false" aria-label="Keyboard arrow up">keyboard_arrow_up</mat-icon></button>
+                    {{displayThread.upCount - displayThread.downCount}}
+                    <button mat-mini-fab color="basic" (click)="downVote()"><mat-icon aria-hidden="false" aria-label="Keyboard arrow up">keyboard_arrow_down</mat-icon></button>
+                    <span class="align-right"></span>
+                    <mat-card-title>{{displayThread.author}}</mat-card-title>
+                    <div mat-card-avatar class="example-header-image"></div>
+                </mat-toolbar-row>
+            </mat-toolbar>
+        </mat-card-footer>
     </mat-card>
 </div>
 <br><hr><br>
 <ng-container *ngFor="let answer of displayThread.answers">
     <div class="center">
         <mat-card class="example-card">
-            <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-            </mat-card-header>
+            <mat-card-title>{{answer.title}}</mat-card-title>
             <mat-card-content>
-                {{answer.response}}
+                {{answer.description}}
             </mat-card-content>
-            <mat-card-actions>
-                <mat-icon aria-hidden="false" aria-label="Keyboard arrow up">keyboard_arrow_up</mat-icon>
-                {{answer.score}}
-                <mat-icon aria-hidden="false" aria-label="Keyboard arrow up">keyboard_arrow_down</mat-icon>
-            </mat-card-actions>
+            <mat-card-footer>
+                <mat-toolbar>
+                    <mat-toolbar-row>
+                        <button mat-mini-fab color="basic" (click)="upVote()">
+                            <mat-icon aria-hidden="false" aria-label="Keyboard arrow up">keyboard_arrow_up</mat-icon>
+                        </button>
+                        {{answer.upCount - answer.downCount}}
+                        <button mat-mini-fab color="basic" (click)="downVote()">
+                            <mat-icon aria-hidden="false" aria-label="Keyboard arrow up">keyboard_arrow_down</mat-icon>
+                        </button>
+                        <span class="align-right"></span>
+                        <mat-card-title>{{answer.author}}</mat-card-title>
+                        <div mat-card-avatar class="example-header-image"></div>
+                    </mat-toolbar-row>
+                </mat-toolbar>
+            </mat-card-footer>
         </mat-card>
     </div>
     <br><hr><br>

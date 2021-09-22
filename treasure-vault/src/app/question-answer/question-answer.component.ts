@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { ThreadService } from "../shared/services/thread.service";
 import { Thread } from "./models/thread";
-import { ThreadService } from "./services/thread.service";
 
 @Component({
     selector: 'app-question-answer',
@@ -19,10 +19,17 @@ export class QuestionAnswerComponent implements OnInit {
 
     ngOnInit() {
         this.displayThread = this.getQuestionThread("1")
-
     }
 
     private getQuestionThread(threadId: string):Thread {
         return this.threadService.getThread(threadId)
+    }
+
+    public upVote() {
+        this.displayThread.upCount++
+    }
+
+    public downVote() {
+        this.displayThread.downCount++
     }
 }

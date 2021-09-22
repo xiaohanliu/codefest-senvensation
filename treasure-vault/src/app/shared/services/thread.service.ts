@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Thread } from "../models/thread";
-import { MockThreads } from "./mock-data/mock-issue-data";
+import { MockThreads } from "src/app/question-answer/mock-data/mock-issue-data";
+import { Thread } from "src/app/question-answer/models/thread";
 
 @Injectable({
     providedIn: 'root'

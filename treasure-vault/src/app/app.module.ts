@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
-  MatGridListModule, MatFormFieldModule,MatInputModule,MatChipsModule,MatListModule,MatCardModule, MatIconModule 
+  MatGridListModule, MatFormFieldModule,MatInputModule,MatChipsModule,MatListModule,MatCardModule, MatIconModule, MatButtonModule, MatToolbarModule 
 } from '@angular/material';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -33,6 +33,8 @@ import { AskQuestionComponent } from './ask-question/ask-question.component';
     MatListModule,
     MatCardModule,
     MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
     BrowserAnimationsModule
   ],
   providers: [],

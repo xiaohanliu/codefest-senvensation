@@ -5,8 +5,8 @@ export interface IBase {
     author: string
     createdDate: Date
     updatedDate: Date
-    upCount: Number
-    downCount: Number
+    upCount: number
+    downCount: number
     parentId?: string
     tags: string[]
 }

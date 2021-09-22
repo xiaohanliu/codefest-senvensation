@@ -12,3 +12,11 @@
   display: flex;
   justify-content: center;
 }
+
+.align-right {
+  flex: 1 1 auto;
+}
+
+div {
+    padding: 20px
+}
