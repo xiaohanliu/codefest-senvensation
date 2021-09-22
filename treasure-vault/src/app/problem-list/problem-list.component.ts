@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProblemListService } from '../shared/services/problem-list.service';
 import { Question } from './model/question';
 
@@ -10,36 +10,32 @@ import { Question } from './model/question';
 })
 export class ProblemListComponent implements OnInit {
 
-  constructor(private router:Router, private problemListService:ProblemListService) { }
-
-  @Input()
-  searchKeywords:string;
-
+  constructor(private router:Router, private route: ActivatedRoute, private problemListService:ProblemListService) { }
   questionList:Question[]
 
   ngOnInit() {
-    this.loadQuestionList();
+    this.route.params.subscribe(params =>{
+      this.loadQuestionList(params.searchKeywords)
+    })
   }
 
-  loadQuestionList(){
+  loadQuestionList(keywords:string){
+    console.log("keywords");
+    console.log(keywords);
     this.problemListService.getProblemList().subscribe({
       next: (problems) =>{
-        console.log(problems);
-        // this.questionList = problems;
+        if(keywords&&keywords.trim()!==""){
+          this.questionList = problems.filter(prob =>prob.title.includes(keywords))
+        }else{
+          this.questionList = problems;
+        }
       },
       error: (err)=>{
         console.error(err);
       }
     })
-
-    // return [{id: "1", author: "TedDancin", createdDate: new Date(), updatedDate: new Date(), description: "Does my code look good?", title: "Cool title" , upCount: 5, downCount: 2, tags:["angular","mock","spy"]},
-    // {id: "2", author: "TedDancin", createdDate: new Date(), updatedDate: new Date(), description: "Does my code look good?", title: "Cool title" , upCount: 5, downCount: 2, tags:["backend","java"]},
-    // {id: "3", author: "TedDancin", createdDate: new Date(), updatedDate: new Date(), description: "Does my code look good?", title: "Cool title" , upCount: 5, downCount: 2, tags:["bdd","cucumber","selenium"]}]
   }
 
-  filterQuestionList():Question[]{
-    return []
-  }
   goToThread(id:string){
     this.router.navigate(['/thread',{id:id}]);
   }
