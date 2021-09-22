@@ -24,7 +24,7 @@ class CdkStack extends cdk.Stack {
       writeCapacity: 1,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       partitionKey: {name: 'id', type: dynamodb.AttributeType.STRING},
-      //sortKey: {name: 'createdAt', type: dynamodb.AttributeType.NUMBER},
+      //sortKey: {name: 'parentId', type: dynamodb.AttributeType.STRING},
       pointInTimeRecovery: true,
     });
 
@@ -34,8 +34,8 @@ class CdkStack extends cdk.Stack {
     // add local secondary index
     /*
     table.addLocalSecondaryIndex({
-      indexName: 'statusIndex',
-      sortKey: {name: 'status', type: dynamodb.AttributeType.STRING},
+      indexName: 'parentIdIndex',
+      sortKey: {name: 'parentId', type: dynamodb.AttributeType.STRING},
       projectionType: dynamodb.ProjectionType.ALL,
     });
     */
