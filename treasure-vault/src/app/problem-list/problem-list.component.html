@@ -6,7 +6,7 @@
 <ng-container *ngFor="let question of questionList; let i = index">
     <mat-grid-list cols="18">
         <mat-grid-tile colspan="4" rowspan="1">
-            <label>{{question.title}}</label>
+            <a mat-button (click)="goToThread()">{{question.title}}</a>
         </mat-grid-tile>
     </mat-grid-list>
     <mat-grid-list cols="18">
