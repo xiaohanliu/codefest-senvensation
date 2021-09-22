@@ -1,6 +1,4 @@
-import { IBase } from "./base-class"
-
-export class Thread implements IBase {
+export interface IBase {
     id: string
     title: string
     description: string
@@ -11,5 +9,4 @@ export class Thread implements IBase {
     downCount: Number
     parentId?: string
     tags: string[]
-    answers: IBase[] 
 }

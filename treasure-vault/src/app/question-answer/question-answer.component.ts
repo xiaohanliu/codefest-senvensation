@@ -4,7 +4,8 @@ import { ThreadService } from "./services/thread.service";
 
 @Component({
     selector: 'app-question-answer',
-    templateUrl: './question-answer.component.html'
+    templateUrl: './question-answer.component.html',
+    styleUrls: ['./question-answer.component.css']
 })
 export class QuestionAnswerComponent implements OnInit {
 
