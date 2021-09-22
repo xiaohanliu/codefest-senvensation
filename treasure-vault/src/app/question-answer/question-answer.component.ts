@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { GlobalValues } from "../shared/global-values";
 import { Person } from "../shared/models/base-class";
@@ -19,14 +20,18 @@ export class QuestionAnswerComponent implements OnInit {
     public displayThread: Thread
     public param: String
     public globalValues: GlobalValues
+    answerForm: FormGroup;
     @ViewChild('mat-input-1', {static: false})public reply: ElementRef
 
-    constructor(threadService: ThreadService, route: ActivatedRoute) { 
+    constructor(private formBuilder: FormBuilder, threadService: ThreadService, route: ActivatedRoute) { 
         this.threadService = threadService
         this.route = route
     }
 
     ngOnInit() {
+        this.answerForm = this.formBuilder.group({
+        reply:[]
+        })
         const id = this.route.snapshot.paramMap.get('id')
         this.displayThread = this.getQuestionThread(id)
     }
@@ -52,6 +57,7 @@ export class QuestionAnswerComponent implements OnInit {
         newAnswer.updatedDate = date
         newAnswer.upCount = 0
         newAnswer.downCount = 0
+        newAnswer.description = this.answerForm.get('reply').value
         this.displayThread.answers.push(newAnswer)
     }
 }

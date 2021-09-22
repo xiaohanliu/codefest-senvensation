@@ -47,12 +47,11 @@
     <br><hr><br>
 </ng-container>
 <div class="center">
-    <div class="example-card">
-        <div class="row">
-            <textarea id="reply"></textarea>
-        </div>
-        <div class="row">
-            <button type="submit" (click)="submitReply()">Post a reply</button>
-        </div>
-    </div>
+    <form [formGroup]="answerForm" (submit)="submitReply()">
+        <mat-form-field class="form-field">
+            <mat-label>Post a reply!</mat-label>
+            <textarea matInput formControlName="reply"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
 </div>
