@@ -13,6 +13,9 @@ import { ProblemListComponent } from './problem-list/problem-list.component';
 import { QuestionAnswerComponent } from './question-answer/question-answer.component';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProblemListService } from './shared/services/problem-list.service';
+import { BaseHttpService } from './shared/services/base-http.service';
+import { ThreadService } from './shared/services/thread.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [BaseHttpService,ProblemListService,ThreadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
