@@ -8,19 +8,12 @@
           <mat-label> Question Title
           </mat-label>
           <input matInput formControlName="title" required>
-          <!-- <mat-error *ngIf="questionForm.controls.title.touched && questionForm.controls.title.invalid">
-            <span *ngIf="questionForm.controls.titie.errors.required">This field is mandatory.</span>
-            <span *ngIf="questionForm.controls.title.errors.pattern">This field is invalid.</span>
-          </mat-error> -->
         </mat-form-field>
         <h1>Question</h1>
         <mat-form-field class="form-field" appearance="outline">
           <mat-label> Question Description
           </mat-label>
           <textarea formControlName="description" type="description" matInput></textarea>
-          <!-- <mat-error *ngIf="questionForm.controls.description.touched && questionForm.controls.description.invalid">
-            <span *ngIf="questionForm.controls.description.errors.required">This field is mandatory.</span>
-          </mat-error> -->
         </mat-form-field>
         <button mat-raised-button color="primary" type="submit">Submit</button>
       </form>
