@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { ThreadService } from "../shared/services/thread.service";
 import { Thread } from "./models/thread";
-import { ThreadService } from "./services/thread.service";
 
 @Component({
     selector: 'app-question-answer',
-    templateUrl: './question-answer.component.html'
+    templateUrl: './question-answer.component.html',
+    styleUrls: ['./question-answer.component.css']
 })
 export class QuestionAnswerComponent implements OnInit {
 
@@ -22,5 +23,13 @@ export class QuestionAnswerComponent implements OnInit {
 
     private getQuestionThread(threadId: string):Thread {
         return this.threadService.getThread(threadId)
+    }
+
+    public upVote() {
+        this.displayThread.upCount++
+    }
+
+    public downVote() {
+        this.displayThread.downCount++
     }
 }
