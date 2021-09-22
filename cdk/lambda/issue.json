@@ -1,12 +1,11 @@
 {
-    "title": "JSON - How to Code",
-    "issueShortDescription": "A review of JSON",
-    "issueDetails": "This is the details: {name: \"Terry\"}",
-    "submittedBy": "tsmith",
-    "lastUpdatedBy": "tsmith",
+    "title": "Terry's Difficult Problem",
+    "description": "I'm having trouble making coffee.  Can anyone help?",
+    "author": { "username": "tsmith01", "organization": "FRB St. Louis"},
     "createdDate": "2021-09-21 12:10",
-    "lastUpdatedDate": "2021-09-21 12:10",
-    "parentId": 0,
+    "updatedDate": "2021-09-21 14:10",
     "upCount": 0,
-    "downCount": 0
+    "downCount": 0,
+    "tags": ["coffee", "drink", "beverage"],
+    "parentId": ""
 }
