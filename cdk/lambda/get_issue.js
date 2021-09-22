@@ -11,40 +11,105 @@ export async function get(event) {
 
     console.log(`Issue filter: ${JSON.stringify(filter)}`);
 
-    if(filter.id) {
+    if(filter) {
+        if(filter.id) {
 
-        let result = await dynamoClient.get({
-            TableName: env.TABLE_NAME,
-            Key: {
-                id: filter.id
-            } 
-        }).promise();
+            /*
+            let issues = await dynamoClient.query({
+                TableName: env.TABLE_NAME,
+                KeyConditionExpression: 'id = :id and (id <> :id AND parentId = :id)',
+                ExpressionAttributeValues: {
+                    ':id': filter.id
+                },
+                ScanIndexForward: true
+            }).promise();
 
-        return {
-            statusCode: 200,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(result),
-        };   
+            console.log(`issues: ${JSON.stringify(issues)}`);
+            
+            return {
+                statusCode: 200,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(issues),
+            };
+            */
 
-    } else if (filter.title) {
+            let parent = await dynamoClient.get({
+                TableName: env.TABLE_NAME,
+                Key: {
+                    id: filter.id
+                } 
+            }).promise();
 
-        let issues = await getIssuesFromDatabase();
+            //console.log(`parent: ${JSON.stringify(parent)}`);
 
-        let results = issues.filter(issue => {
-            if(String(issue.title).search(filter.title) >= 0) {
-                return issue;
-            }
-        });
+            if(parent) {
 
-        return {
-            statusCode: 200,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(results),
-        }; 
+                parent = parent.Item;
+
+                console.log(`parent: ${JSON.stringify(parent)}`);
+
+                let children = await dynamoClient.scan({
+                    TableName: env.TABLE_NAME,
+                    FilterExpression: 'parentId = :id',
+                    ExpressionAttributeValues: {
+                        ':id': filter.id
+                    },
+                    //Select: 'ALL_ATTRIBUTES',
+                    //ScanIndexForward: true
+                }).promise();
+
+                console.log(`children: ${JSON.stringify(children)}`);
+
+                parent['answers'] = children.Items ? children.Items : [];
+                
+                console.log(`parent: ${JSON.stringify(parent)}`);
+
+                return {
+                    statusCode: 200,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(parent),
+                };
+            } else {
+                return {
+                    statusCode: 400,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(`No issue found for id ${filter.id}.`),
+                }; 
+            }  
+
+        } else if (filter.title) {
+
+            let issues = await getIssuesFromDatabase();
+
+            let results = issues.filter(issue => {
+                if(String(issue.title).search(filter.title) >= 0) {
+                    return issue;
+                }
+            });
+
+            return {
+                statusCode: 200,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(results),
+            }; 
+
+        } else {
+            return {
+                statusCode: 400,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: "Only id and title are supported for filter criteria.",
+            }; 
+        }
 
     } else {
 

@@ -12,6 +12,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProblemListComponent } from './problem-list/problem-list.component';
 import { QuestionAnswerComponent } from './question-answer/question-answer.component';
 import { AskQuestionComponent } from './ask-question/ask-question.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AskQuestionComponent } from './ask-question/ask-question.component';
     MatButtonModule,
     MatToolbarModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { GlobalValues } from "../shared/global-values";
-import { IBase, Person } from "../shared/models/base-class";
+import { Person } from "../shared/models/base-class";
 import { ThreadService } from "../shared/services/thread.service";
 import { Answer } from "./models/answer";
 import { Thread } from "./models/thread";
@@ -52,7 +52,6 @@ export class QuestionAnswerComponent implements OnInit {
         newAnswer.updatedDate = date
         newAnswer.upCount = 0
         newAnswer.downCount = 0
-        newAnswer.description = document.getElementById("mat-input-1").innerHTML;
         this.displayThread.answers.push(newAnswer)
     }
 }

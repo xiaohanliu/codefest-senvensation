@@ -48,10 +48,11 @@
 </ng-container>
 <div class="center">
     <div class="example-card">
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Post a reply</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-        </mat-form-field>
-        <button type="button" mat-button color="basic" (click)="submitReply()">Submit</button>
+        <div class="row">
+            <textarea id="reply"></textarea>
+        </div>
+        <div class="row">
+            <button type="submit" (click)="submitReply()">Post a reply</button>
+        </div>
     </div>
 </div>
