@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Question } from './model/question';
 
 @Component({
@@ -8,7 +9,7 @@ import { Question } from './model/question';
 })
 export class ProblemListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   @Input()
   searchKeywords:string;
@@ -27,6 +28,9 @@ export class ProblemListComponent implements OnInit {
 
   filterQuestionList():Question[]{
     return []
+  }
+  goToThread(){
+    this.router.navigate(['thread']);
   }
 
 
